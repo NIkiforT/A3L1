@@ -15,7 +15,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-
         viewModel.viewState().observe(this, Observer { str ->
             Toast.makeText(this, str, Toast.LENGTH_SHORT).show()
         })
