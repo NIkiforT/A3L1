@@ -3,17 +3,15 @@ package nikifor.tatarkin.a3l1
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import nikifor.tatarkin.a3l1.data.Repository
 
 class MainViewModel : ViewModel() {
 
-    private val model = Model()
-    private val viewStateLiveData = MutableLiveData<String>()
+    private val viewStateLiveData = MutableLiveData<MainViewState>()
 
     init {
-        model.getStringLiveData().observeForever{str ->
-            viewStateLiveData.value = str
-        }
+        viewStateLiveData.value = MainViewState(Repository.getNotes())
     }
 
-    fun viewState(): LiveData<String> = viewStateLiveData
+    fun viewState(): LiveData<MainViewState> = viewStateLiveData
 }
